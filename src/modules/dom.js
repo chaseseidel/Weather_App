@@ -56,27 +56,21 @@ export default function buildPage() {
   const wind = document.createElement("div");
   const pressure = document.createElement("div");
 
-  feelTemp.textContent = "Feels Like:";
   feelTemp.classList.add("info");
   feelTemp.setAttribute("id", "feelTemp");
 
-  humidity.textContent = "Humidity:";
   humidity.classList.add("info");
   humidity.setAttribute("id", "humidity");
 
-  uvIndex.textContent = "UV:";
   uvIndex.classList.add("info");
   uvIndex.setAttribute("id", "UV");
 
-  visibility.textContent = "Visibility";
   visibility.classList.add("info");
   visibility.setAttribute("id", "visibility");
 
-  wind.textContent = "Wind:";
   wind.classList.add("info");
   wind.setAttribute("id", "wind");
 
-  pressure.textContent = "Pressure:";
   pressure.classList.add("info");
   pressure.setAttribute("id", "pressure");
 
@@ -109,11 +103,6 @@ export default function buildPage() {
   form.setAttribute("id", "form");
   form.appendChild(input);
   form.appendChild(searchImg);
-
-  cityName.textContent = "London, United Kingdom";
-  currentTemp.textContent = "37";
-  conditions.textContent = "Partly Sunny";
-  status.textContent = "Updates as of 01:27";
 
   container.appendChild(mainContent);
   container.appendChild(form);
