@@ -15,10 +15,14 @@ body {
   font-size: 18px;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+}
+
 #container {
   min-height: 100vh;
-  min-width: 100%;
-  background-image: url(../img/clear-skies.jpg);
+  min-width: 100vw;
+  background-image: url('../img/background.jpg');
   background-size: cover;
   display: flex;
   flex-direction: column;
