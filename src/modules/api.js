@@ -5,3 +5,11 @@ export default async function getWeatherData(city) {
   const weatherData = await response.json();
   return weatherData;
 }
+
+export async function getImageCode() {
+  const response = await fetch(
+    "https://www.weatherapi.com/docs/weather_conditions.json"
+  );
+  const imageCodes = await response.json();
+  return imageCodes;
+}
