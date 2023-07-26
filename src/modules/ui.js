@@ -1,6 +1,22 @@
 import getWeatherData from "./api";
+import { getImageCode } from "./api";
 
 let currentCity = "London";
+
+function importAll(r) {
+  let images = {};
+  r.keys().map((item, index) => {
+    images[item.replace("./", "")] = r(item);
+  });
+  return images;
+}
+
+const dayIcons = importAll(
+  require.context("../img/day", false, /\.(png|jpe?g|svg)$/)
+);
+const nightIcons = importAll(
+  require.context("../img/night", false, /\.(png|jpe?g|svg)$/)
+);
 
 export default function buttonEventListener() {
   const button = document.getElementById("submit");
@@ -15,7 +31,7 @@ export default function buttonEventListener() {
       const weather = await getWeatherData(`${input.value}`);
       input.value = "";
       displayInfoMetric(weather);
-      console.log(weather);
+      await displayWeatherIcon(weather);
       currentCity = weather.location.name;
     } catch (error) {
       console.log(`You have an error to look at: ${error}`);
@@ -63,6 +79,7 @@ export default function buttonEventListener() {
 export async function loadPage() {
   const weather = await getWeatherData("London");
   displayInfoMetric(weather);
+  await displayWeatherIcon(weather);
 }
 
 function displayInfoMetric(city) {
@@ -119,6 +136,22 @@ function displayInfoImperial(city) {
   pressure.textContent = `Pressure: ${city.current.pressure_in} in`;
 }
 
+async function displayWeatherIcon(city) {
+  const icon = document.getElementById("current-icon");
+  const time = city.location.localtime;
+  const timeArray = time.split(" ");
+  const hour = timeArray[1].split(":");
+
+  const imageCode = await getImageID(city.current.condition.code);
+  console.log(imageCode);
+
+  if (hour[0] > 6 && hour[0] < 18) {
+    icon.src = dayIcons[`${imageCode}.png`];
+  } else {
+    icon.src = nightIcons[`${imageCode}.png`];
+  }
+}
+
 function convertTimeToTwelveHours(time) {
   const timeArray = time.split(":");
   if (timeArray[0] > 12) {
@@ -127,4 +160,14 @@ function convertTimeToTwelveHours(time) {
   } else {
     return `${timeArray[0]}:${timeArray[1]} am`;
   }
+}
+
+async function getImageID(objectCode) {
+  const codes = await getImageCode();
+
+  const imageCodes = codes.find((object) => {
+    return object.code === objectCode;
+  });
+
+  return imageCodes.icon;
 }
