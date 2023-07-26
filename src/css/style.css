@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --white-color: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: monteserrat, sans-serif;
+  color: var(--white-color);
+  font-size: 18px;
+}
+
+#container {
+  min-height: 100vh;
+  min-width: 100%;
+  background-image: url(../img/clear-skies.jpg);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 150px;
+}
+
+#main-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#city-name {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+#current-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+#current-icon {
+  height: auto;
+  width: 100px;
+}
+
+#current-temp {
+  font-size: 5rem;
+}
+
+#temp-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.temp-button {
+  border: none;
+  background: none;
+  color: var(--white-color);
+  font-size: 1.5rem;
+}
+
+.active {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.inactive:hover {
+  transform: scale(1.2);
+}
+
+#conditions,
+#update-status {
+  text-align: center;
+}
+
+#update-status {
+  font-weight: 600;
+}
+
+#extra-info {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  gap: 15px;
+  margin: 50px 0;
+}
+
+.info {
+  text-align: center;
+}
+
+#form {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#search {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-family: monteserrat, sans-serif;
+  font-size: 1rem;
+}
+
+#search:focus {
+  outline: none;
+}
+
+#submit {
+  width: 30px;
+}
+
+#submit:hover {
+  transform: scale(1.05);
+}
