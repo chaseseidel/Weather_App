@@ -1,5 +1,5 @@
 import search from "../img/search.png";
-import weather from "../img/weathericon.png";
+import loading from "../img/loading.png";
 
 export default function buildPage() {
   const container = document.getElementById("container");
@@ -27,7 +27,7 @@ export default function buildPage() {
   const tempButtonC = document.createElement("button");
   const tempButtonF = document.createElement("button");
 
-  weatherIcon.src = weather;
+  weatherIcon.src = loading;
   weatherIcon.alt = "Current weather icon";
   weatherIcon.setAttribute("id", "current-icon");
 
